@@ -13,8 +13,13 @@
 [ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=11]
 [ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=12]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Run",
@@ -25,18 +30,13 @@ animations = [ {
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "Fall",
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 14.0
 height = 28.0
 
@@ -47,10 +47,10 @@ __meta__ = {
 }
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "Idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
