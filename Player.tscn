@@ -1,46 +1,120 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Player/Idle0.png" type="Texture" id=3]
-[ext_resource path="res://Sprites/Player/Run2.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Player/Jump0.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Player/Jump4.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Player/Run1.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Player/Jump1.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Player/Jump3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/fall_96.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/idle_anim_96.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/idle_anim_wo smoke_96.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/jump_96.png" type="Texture" id=5]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 96, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 96, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 192, 96, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 192, 96, 96 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 96, 192, 96, 96 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": false,
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 7 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": false,
 "name": "Fall",
 "speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 14.0
-height = 28.0
+radius = 20.075
+height = 38.899
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 0.184029, 1.10416 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -52,5 +126,5 @@ animation = "Idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4 )
+position = Vector2( 2, -3 )
 shape = SubResource( 2 )
