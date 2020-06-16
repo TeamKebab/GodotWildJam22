@@ -4,7 +4,7 @@ extends KinematicBody2D
 # Declare member variables here.
 const GRAVITY = 20
 const MAX_SPEED = 500
-const ROTATION = PI / 4
+const ROTATION = PI / 2
 
 var motion = Vector2()
 var up = Vector2(0, -1)

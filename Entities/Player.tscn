@@ -1,9 +1,11 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/fall_96.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Player/idle_anim_96.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/idle_anim_wo smoke_96.png" type="Texture" id=4]
+
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
