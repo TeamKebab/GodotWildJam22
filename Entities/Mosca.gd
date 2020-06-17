@@ -22,7 +22,7 @@ func _physics_process(delta):
 	print("size: ", patrol_points.size())
 	print("index: ", patrol_index)
 	var velocity = (target - position).normalized() * move_speed
-	velocity = move_and_slide(velocity)
+	position = position + delta * velocity
 	
 	$AnimatedSprite.rotation = velocity.angle()
 	if (velocity.x < 0.5):

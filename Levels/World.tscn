@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Tileset/JunldeDirtAutoTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Spikes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Entities/Mosca.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Entities/Serpiente.tscn" type="PackedScene" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 81, 9 )
@@ -54,8 +55,8 @@ number_of_spikes = 6
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 192, 192 )
 
-[node name="Mosca" parent="." instance=ExtResource( 6 )]
-position = Vector2( 448, 480 )
+[node name="Serpiente" parent="." instance=ExtResource( 7 )]
+position = Vector2( 136, 480 )
 patrol_path = NodePath("../Path2D")
 
 [node name="Mosca2" parent="." instance=ExtResource( 6 )]

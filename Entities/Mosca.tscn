@@ -4,10 +4,6 @@
 [ext_resource path="res://Sprites/Hazardos/mosca3.png" type="Texture" id=2]
 [ext_resource path="res://Entities/Mosca.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape2D" id=10]
-radius = 19.6083
-height = 15.2866
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 64, 64 )
@@ -48,15 +44,20 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 19.8256
+height = 11.7814
+
 [node name="Mosca" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" parent="." index="0"]
-position = Vector2( 0, -2 )
-rotation = 1.5708
-shape = SubResource( 10 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 9 )
+frame = 2
 playing = true
 flip_h = true
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -3.06506, -2.68114 )
+rotation = 1.5708
+shape = SubResource( 10 )
