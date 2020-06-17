@@ -1,7 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Entities/Mosca.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Entities/PathFollowingHazard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Hazardos/snake.png" type="Texture" id=2]
+
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )

@@ -19,8 +19,6 @@ func _physics_process(delta):
 		patrol_index = wrapi(patrol_index + 1, 0, patrol_points.size())
 		target = patrol_points[patrol_index]
 	
-	print("size: ", patrol_points.size())
-	print("index: ", patrol_index)
 	var velocity = (target - position).normalized() * move_speed
 	position = position + delta * velocity
 	
