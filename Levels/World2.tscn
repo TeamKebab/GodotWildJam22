@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Tileset/JunldeDirtAutoTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/WorldComplete.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entities/Spikes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Entities/MeteoriteSpawner.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node"]
 
@@ -41,6 +42,39 @@ rotation = 3.14159
 number_of_spikes = 9
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 192, 192 )
+position = Vector2( 192, 264 )
+
+[node name="MeteoriteSpawner" parent="." instance=ExtResource( 6 )]
+position = Vector2( 448, 136 )
+
+[node name="Spawner" parent="MeteoriteSpawner" index="0"]
+first_spawn_offset = 0.25
+
+[node name="MeteoriteSpawner2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 512, 136 )
+
+[node name="MeteoriteSpawner4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 577, 136 )
+
+[node name="Spawner" parent="MeteoriteSpawner4" index="0"]
+first_spawn_offset = 0.25
+
+[node name="MeteoriteSpawner3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 641, 136 )
+
+[node name="MeteoriteSpawner6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 712, 136 )
+
+[node name="Spawner" parent="MeteoriteSpawner6" index="0"]
+first_spawn_offset = 0.25
+
+[node name="MeteoriteSpawner5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 776, 136 )
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
+
+[editable path="MeteoriteSpawner"]
+
+[editable path="MeteoriteSpawner4"]
+
+[editable path="MeteoriteSpawner6"]

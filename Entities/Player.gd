@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const GRAVITY = 20
+const GRAVITY = 1000
 const MAX_SPEED = 500
 const ROTATION = PI / 2
 
@@ -19,25 +19,17 @@ func _ready():
 	start_up = Vector2(0,-1).rotated(rotation)
 	
 	restart()
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _physics_process(delta):
-	motion += -GRAVITY * up;
+	motion += (-GRAVITY * up) * delta;
 	
 	if Input.is_action_just_pressed("ui_right"):
-		up = up.rotated(ROTATION)
-		rotate(ROTATION)
+		change_gravity(ROTATION)
 		$Sprite.flip_h = false
 		$Sprite.play("Jump")
 		
 	elif Input.is_action_just_pressed("ui_left"):
-		up = up.rotated(-ROTATION)
-		rotate(-ROTATION)
+		change_gravity(-ROTATION)
 		
 		$Sprite.flip_h = true
 		$Sprite.play("Jump")
@@ -68,6 +60,11 @@ func _physics_process(delta):
 					
 	pass
 
+func change_gravity(rotation):
+	up = up.rotated(rotation)
+	rotate(rotation)
+	PlayerVariables.change_gravity(-GRAVITY * up)
+		
 func finished_animation():
 	if $Sprite.animation == "Jump":
 		$Sprite.play("Run");
@@ -79,4 +76,7 @@ func restart():
 	up = start_up
 	rotation = 0
 	$Sprite.flip_h = false
+	
+	PlayerVariables.change_gravity(-GRAVITY * up)
+	
 	pass
