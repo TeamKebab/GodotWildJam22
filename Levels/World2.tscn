@@ -15,7 +15,7 @@ tile_data = PoolIntArray( 0, 0, 6, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1184, 608 )
-world_scene = "res://Levels/Win.tscn"
+world_scene = "res://Levels/World3.tscn"
 
 [node name="Spikes" parent="." instance=ExtResource( 5 )]
 position = Vector2( 320, 696 )
