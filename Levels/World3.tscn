@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Tileset/JunldeDirtAutoTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/WorldComplete.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/stemapunk-background.png" type="Texture" id=5]
 
 [node name="World" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 768.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )

@@ -1,41 +1,10 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Player/fall_96.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/robotillo_up.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Player/idle_anim_96.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/idle_anim_wo smoke_96.png" type="Texture" id=4]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 0, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 96, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 96, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 192, 96, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 192, 96, 96 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 2 )
-region = Rect2( 96, 192, 96, 96 )
+[ext_resource path="res://Sprites/Player/robotillo_horiz.png" type="Texture" id=5]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
@@ -74,11 +43,6 @@ region = Rect2( 96, 96, 96, 96 )
 
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
-"loop": false,
-"name": "Fall",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 9 ), SubResource( 10 ) ],
 "loop": true,
 "name": "Idle",
@@ -86,12 +50,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
-"name": "Run",
+"name": "Fall",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
 "loop": false,
-"name": "Jump",
+"name": "Turn",
 "speed": 10.0
 } ]
 
@@ -99,19 +63,101 @@ animations = [ {
 radius = 20.075
 height = 38.899
 
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 348, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 0, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 174, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 174, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 2 )
+region = Rect2( 192, 174, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 348, 96, 174 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 96, 144 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 96, 144 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 96, 144 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 144, 96, 144 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 144, 96, 144 )
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
+"loop": false,
+"name": "Turn",
+"speed": 10.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=34]
+radius = 32.973
+height = 28.2961
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0.184029, 1.10416 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Sprite" type="AnimatedSprite" parent="."]
+[node name="RightySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-animation = "Idle"
-frame = 1
+animation = "Turn"
+frame = 3
 playing = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="RightyShape" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -4 )
 shape = SubResource( 19 )
+
+[node name="LeftySprite" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 33 )
+animation = "Turn"
+frame = 4
+playing = true
+
+[node name="LeftyShape" type="CollisionShape2D" parent="."]
+position = Vector2( 0.37075, 31.4063 )
+shape = SubResource( 34 )

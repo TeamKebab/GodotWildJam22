@@ -11,42 +11,44 @@ var start_up
 var motion
 var up
 
+var sprite
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.connect("animation_finished", self, "finished_animation")	
+	$LeftySprite.connect("animation_finished", self, "finished_animation")	
+	$RightySprite.connect("animation_finished", self, "finished_animation")	
+	
 	start_position = position	
 	start_motion = Vector2()
 	start_up = Vector2(0,-1).rotated(rotation)
 	
+	set_character()
 	restart()
 
 func _physics_process(delta):
 	motion += (-GRAVITY * up) * delta;
 	
-	if Input.is_action_just_pressed("ui_right"):
+	if PlayerVariables.can_turn_right() and Input.is_action_just_pressed("ui_right"):
 		change_gravity(ROTATION)
-		$Sprite.flip_h = false
-		$Sprite.play("Jump")
+		sprite.play("Turn")
 		
-	elif Input.is_action_just_pressed("ui_left"):
+	elif PlayerVariables.can_turn_left() and Input.is_action_just_pressed("ui_left"):
 		change_gravity(-ROTATION)
-		
-		$Sprite.flip_h = true
-		$Sprite.play("Jump")
+		sprite.play("Turn")
 
 				
 	if is_on_floor():	
 		motion = lerp(motion, Vector2(0,0), 0.2)
 		
 		if motion.length() < 0.5:			
-			$Sprite.play("Idle")
+			sprite.play("Idle")
 	else:
 		motion = lerp(motion, Vector2(0,0), 0.02)
 		
 	motion = move_and_slide(motion, up)
 	
 	if motion.length() < 0.01:			
-		$Sprite.play("Idle")
+		sprite.play("Idle")
 	
 	var slide_count = get_slide_count()
 	if slide_count > 0:
@@ -66,17 +68,35 @@ func change_gravity(rotation):
 	PlayerVariables.change_gravity(-GRAVITY * up)
 		
 func finished_animation():
-	if $Sprite.animation == "Jump":
-		$Sprite.play("Run");
+	if sprite.animation == "Turn":
+		sprite.play("Fall");
 	pass
+
+func set_character():
+	if PlayerVariables.character == "Lefty":
+		sprite = $RightySprite
+		
+		$RightySprite.hide()
+		$RightyShape.hide()
+		$RightyShape.disabled = true
+		
+		$LeftySprite.show()
+		$LeftyShape.show()
+		$LeftyShape.disabled = false
+	else:
+		sprite = $LeftySprite
+		$LeftySprite.hide()
+		$LeftySprite.hide()
+		$LeftyShape.disabled = true
+		
+		$RightySprite.show()
+		$RightySprite.show()
+		$RightyShape.disabled = false
 
 func restart():
 	position = start_position
 	motion = start_motion
 	up = start_up
 	rotation = 0
-	$Sprite.flip_h = false
 	
 	PlayerVariables.change_gravity(-GRAVITY * up)
-	
-	pass
