@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Tileset/JunldeDirtAutoTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Entities/WorldComplete.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=4]
 
 [node name="World" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 192, 192 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -16,4 +14,9 @@ tile_data = PoolIntArray( 0, 0, 6, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 
 [node name="Goal" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1184, 608 )
-world_scene = "res://Levels/World.tscn"
+world_scene = "res://Win.tscn"
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 192, 192 )
+
+[node name="GUI" parent="." instance=ExtResource( 4 )]
