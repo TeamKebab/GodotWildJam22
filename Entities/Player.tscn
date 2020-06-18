@@ -142,9 +142,9 @@ position = Vector2( 0.184029, 1.10416 )
 script = ExtResource( 1 )
 
 [node name="RightySprite" type="AnimatedSprite" parent="."]
+visible = false
 frames = SubResource( 18 )
-animation = "Turn"
-frame = 3
+animation = "Fall"
 playing = true
 
 [node name="RightyShape" type="CollisionShape2D" parent="."]
@@ -152,10 +152,9 @@ position = Vector2( 2, -4 )
 shape = SubResource( 19 )
 
 [node name="LeftySprite" type="AnimatedSprite" parent="."]
-visible = false
 frames = SubResource( 33 )
-animation = "Turn"
-frame = 4
+animation = "Fall"
+frame = 5
 playing = true
 
 [node name="LeftyShape" type="CollisionShape2D" parent="."]

@@ -59,8 +59,6 @@ func _physics_process(delta):
 				PlayerVariables.change_player_health(-collider.get_damage())
 				restart()
 				break
-					
-	pass
 
 func change_gravity(rotation):
 	up = up.rotated(rotation)
@@ -74,7 +72,7 @@ func finished_animation():
 
 func set_character():
 	if PlayerVariables.character == "Lefty":
-		sprite = $RightySprite
+		sprite = $LeftySprite
 		
 		$RightySprite.hide()
 		$RightyShape.hide()
@@ -83,8 +81,10 @@ func set_character():
 		$LeftySprite.show()
 		$LeftyShape.show()
 		$LeftyShape.disabled = false
+		$LeftySprite.play("Fall")
 	else:
-		sprite = $LeftySprite
+		sprite = $RightySprite
+		
 		$LeftySprite.hide()
 		$LeftySprite.hide()
 		$LeftyShape.disabled = true
@@ -92,6 +92,7 @@ func set_character():
 		$RightySprite.show()
 		$RightySprite.show()
 		$RightyShape.disabled = false
+		$RightySprite.play("Fall")
 
 func restart():
 	position = start_position
