@@ -5,8 +5,6 @@
 [ext_resource path="res://Sprites/Player/idle_anim_96.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/idle_anim_wo smoke_96.png" type="Texture" id=4]
 
-
-
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 96, 96 )
@@ -56,26 +54,21 @@ atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 96, 96 )
 
 [sub_resource type="StreamTexture" id=13]
-flags = 4
 load_path = "res://.import/jump_96.png-1f9a2222c27548c22342b25605c249a9.stex"
 
 [sub_resource type="AtlasTexture" id=14]
-flags = 4
 atlas = SubResource( 13 )
 region = Rect2( 0, 0, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=15]
-flags = 4
 atlas = SubResource( 13 )
 region = Rect2( 96, 0, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=16]
-flags = 4
 atlas = SubResource( 13 )
 region = Rect2( 0, 96, 96, 96 )
 
 [sub_resource type="AtlasTexture" id=17]
-flags = 4
 atlas = SubResource( 13 )
 region = Rect2( 96, 96, 96, 96 )
 
@@ -120,5 +113,5 @@ frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 2, -3 )
+position = Vector2( 2, -4 )
 shape = SubResource( 19 )
