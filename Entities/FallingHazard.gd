@@ -7,7 +7,7 @@ signal destroyed()
 
 var gravity
 var motion
-
+var gravity_factor = 0.2
 func _ready():
 	PlayerVariables.connect("gravity_changed", self, "_on_Player_gravity_changed")
 	
@@ -18,7 +18,7 @@ func _on_Player_gravity_changed(new_gravity):
 	gravity = new_gravity	
 
 func _physics_process(delta):
-	motion += gravity * delta;
+	motion += gravity * gravity_factor * delta;
 	
 	$AnimatedSprite.rotation = motion.angle() - PI / 2
 	
