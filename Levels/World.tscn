@@ -29,6 +29,7 @@ world_scene = "res://Levels/World2.tscn"
 
 [node name="Spikes" parent="." instance=ExtResource( 5 )]
 position = Vector2( 144, 696 )
+damage = 1
 number_of_spikes = 6
 
 [node name="CollisionShape2D" parent="Spikes" index="0"]
@@ -40,11 +41,13 @@ margin_right = 81.0
 
 [node name="Spikes2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 992, 376 )
+damage = 1
 number_of_spikes = 7
 
 [node name="Spikes3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 944, 72 )
 rotation = 3.14159
+damage = 1
 number_of_spikes = 6
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
