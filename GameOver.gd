@@ -1,4 +1,6 @@
 extends Control
 
-func _on_Restart_pressed():
-	PlayerVariables.restart() 
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		PlayerVariables.restart() 
+
