@@ -336,9 +336,11 @@ tile_data = PoolIntArray( 0, 0, 6, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 
 [node name="Mosca" parent="Hazardos" index="0" instance=ExtResource( 2 )]
 position = Vector2( 1104, 448 )
+move_speed = 250
 
 [node name="Mosca2" parent="Hazardos" index="1" instance=ExtResource( 2 )]
 position = Vector2( 200, 200 )
+move_speed = 250
 start_direction = 90
 
 [node name="WorldComplete" parent="." index="2"]
