@@ -22,7 +22,7 @@ func change_gravity(new_gravity):
 
 func choose_character(new_character):
 	character = new_character
-	get_tree().change_scene("res://Levels/World.tscn")
+	get_tree().change_scene("res://Levels/Level1.tscn")
 	
 func can_turn_left():
 	return character == "Lefty" or character == "God"
