@@ -18,7 +18,7 @@ region = Rect2( 17, 0, 17, 48 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 5 )
-region = Rect2( 72, 8, 48, 48 )
+region = Rect2( 48, 4, 36, 32 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 26
@@ -66,7 +66,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 
 [node name="Deaths" type="HBoxContainer" parent="HBoxContainer"]
-margin_right = 229.0
+margin_right = 217.0
 margin_bottom = 48.0
 custom_constants/separation = 0
 
@@ -77,12 +77,12 @@ texture = SubResource( 5 )
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/Deaths"]
 margin_left = 10.0
-margin_right = 212.0
+margin_right = 200.0
 margin_bottom = 48.0
 custom_styles/panel = SubResource( 9 )
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/Deaths/PanelContainer"]
-margin_right = 202.0
+margin_right = 190.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 texture = SubResource( 6 )
@@ -92,13 +92,14 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Deaths/PanelContainer"]
-margin_right = 202.0
-margin_bottom = 48.0
+margin_top = 8.0
+margin_right = 190.0
+margin_bottom = 40.0
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Deaths/PanelContainer/HBoxContainer"]
-margin_right = 48.0
-margin_bottom = 48.0
+[node name="PlayerHead" type="TextureRect" parent="HBoxContainer/Deaths/PanelContainer/HBoxContainer"]
+margin_right = 36.0
+margin_bottom = 32.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 size_flags_stretch_ratio = 0.0
@@ -106,30 +107,29 @@ texture = SubResource( 10 )
 stretch_mode = 4
 
 [node name="DeathCounter" type="Label" parent="HBoxContainer/Deaths/PanelContainer/HBoxContainer"]
-margin_left = 52.0
-margin_top = 8.0
-margin_right = 202.0
-margin_bottom = 40.0
+margin_left = 40.0
+margin_right = 190.0
+margin_bottom = 32.0
 custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.301961, 0.290196, 0.282353, 1 )
 text = "9000000000"
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/Deaths"]
-margin_left = 212.0
-margin_right = 229.0
+margin_left = 200.0
+margin_right = 217.0
 margin_bottom = 48.0
 texture = SubResource( 7 )
 
 [node name="VolumeContainer" type="HBoxContainer" parent="HBoxContainer"]
-margin_left = 233.0
+margin_left = 221.0
 margin_right = 1240.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="Music" type="TextureButton" parent="HBoxContainer/VolumeContainer"]
-margin_left = 907.0
-margin_right = 955.0
+margin_left = 919.0
+margin_right = 967.0
 margin_bottom = 48.0
 toggle_mode = true
 pressed = true
@@ -138,8 +138,8 @@ texture_pressed = SubResource( 2 )
 stretch_mode = 3
 
 [node name="Effects" type="TextureButton" parent="HBoxContainer/VolumeContainer"]
-margin_left = 959.0
-margin_right = 1007.0
+margin_left = 971.0
+margin_right = 1019.0
 margin_bottom = 48.0
 toggle_mode = true
 pressed = true

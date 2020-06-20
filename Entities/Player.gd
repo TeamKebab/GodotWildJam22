@@ -63,6 +63,9 @@ func process_inputs():
 		change_gravity(-ROTATION)
 		sprite.play("Turn")
 		
+	if Input.is_action_just_pressed("ui_cancel"):
+		PlayerVariables.restart()
+		
 func change_gravity(rotation):
 	up = up.rotated(rotation)
 	PlayerVariables.change_gravity(-GRAVITY * up)

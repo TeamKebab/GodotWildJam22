@@ -2,6 +2,7 @@ extends Node
 
 signal deaths_changed(player_deaths)
 signal gravity_changed(new_gravity)
+signal character_choosen(character)
 
 var player_deaths = 0
 var gravity = Vector2(0,0)
@@ -60,6 +61,7 @@ func choose_character(new_character):
 	character = new_character
 	play_sound("choose_character")
 	load_level("res://Levels/Level1.tscn")
+	emit_signal("character_chosen", new_character)
 	
 func can_turn_left():
 	return character == "Lefty" or character == "God"
