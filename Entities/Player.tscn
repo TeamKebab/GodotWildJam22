@@ -152,8 +152,8 @@ shape = SubResource( 11 )
 
 [node name="LeftySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 23 )
-animation = "Idle"
-frame = 2
+animation = "Fall"
+frame = 1
 playing = true
 
 [node name="LeftyShape" type="CollisionShape2D" parent="."]
