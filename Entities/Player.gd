@@ -3,6 +3,7 @@ extends KinematicBody2D
 const GRAVITY = 1000
 const MAX_SPEED = 500
 const ROTATION = PI / 2
+const ROTATION_SPEED = 15 * PI
 
 var start_position
 var start_motion
@@ -36,6 +37,7 @@ func _physics_process(delta):
 		change_gravity(-ROTATION)
 		sprite.play("Turn")
 
+	rotate_with_gravity(delta)
 				
 	if is_on_floor():	
 		motion = lerp(motion, Vector2(0,0), 0.2)
@@ -60,9 +62,24 @@ func _physics_process(delta):
 				restart()
 				break
 
+func rotate_with_gravity(delta):
+	var desired_rotation = up.angle() + PI/2
+	
+	if rotation != desired_rotation:
+		var rotation_direction = desired_rotation - rotation
+		
+		if rotation_direction > PI:
+			rotation_direction = rotation_direction - 2 * PI
+		if rotation_direction < -PI:
+			rotation_direction = 2 * PI - rotation_direction
+			
+		if rotation_direction > 0:
+			rotate(min(rotation_direction, ROTATION_SPEED * delta))
+		else:
+			rotate(max(rotation_direction, -ROTATION_SPEED * delta))
+
 func change_gravity(rotation):
 	up = up.rotated(rotation)
-	rotate(rotation)
 	PlayerVariables.change_gravity(-GRAVITY * up)
 		
 func finished_animation():
