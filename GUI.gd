@@ -1,15 +1,11 @@
 extends MarginContainer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 onready var hearts = [
-	$HBoxContainer/Heart,
-	$HBoxContainer/Heart2,
-	$HBoxContainer/Heart3,
-	$HBoxContainer/Heart4,
-	$HBoxContainer/Heart5
+	$HBoxContainer/Hearts/Heart,
+	$HBoxContainer/Hearts/Heart2,
+	$HBoxContainer/Hearts/Heart3,
+	$HBoxContainer/Hearts/Heart4,
+	$HBoxContainer/Hearts/Heart5
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -34,3 +30,9 @@ func change_hearts(num_hearts):
 		else:
 			hearts[i].hide()
 	
+func _on_Music_toggled(button_pressed):
+	PlayerVariables.set_play_music(button_pressed)
+
+
+func _on_Effects_toggled(button_pressed):
+	PlayerVariables.set_play_sounds(button_pressed)

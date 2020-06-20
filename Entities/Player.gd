@@ -107,7 +107,7 @@ func collide_with_hazards():
 			var collider = collision.get_collider()
 			if collider.has_method("get_damage"):
 				PlayerVariables.change_player_health(-collider.get_damage())
-				restart()
+				revive()
 				break
 
 func finished_animation():
@@ -139,12 +139,15 @@ func set_character():
 		$RightyShape.disabled = false
 		$RightySprite.play("Fall")
 
+func revive():	
+	time_since_last_death = 0
+	PlayerVariables.play_sound("loading_player")
+	restart()
+	
 func restart():
 	position = start_position
 	motion = start_motion
 	up = start_up
 	rotation = 0
-	
-	time_since_last_death = 0
 	
 	PlayerVariables.change_gravity(-GRAVITY * up)
