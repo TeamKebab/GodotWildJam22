@@ -16,6 +16,7 @@ var up
 var time_since_last_death
 
 var sprite
+var spawnSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,13 +31,19 @@ func _ready():
 	restart()
 	time_since_last_death = INVULNERABILITY_SECONDS
 
+	spawnSprite = get_parent().find_node("SpawnerSprite")
+	spawnSprite.play("Loading")
+	
 		
 func _physics_process(delta):
 	time_since_last_death += delta
 	
 	if time_since_last_death > NO_MOVEMENT_SECONDS:
 		process_inputs()
-
+		spawnSprite.play("Waiting")
+	else:
+		spawnSprite.play("Loading")
+	
 	rotate_with_gravity(delta)	
 	move(delta)
 	
