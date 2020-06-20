@@ -34,8 +34,6 @@ func _ready():
 func _physics_process(delta):
 	time_since_last_death += delta
 	
-	print(time_since_last_death)
-	
 	if time_since_last_death > NO_MOVEMENT_SECONDS:
 		process_inputs()
 

@@ -7,5 +7,5 @@ func _physics_process(delta):
 	
 	for body in bodies:
 		if body.name == "Player":
-			get_tree().change_scene(world_scene)
+			PlayerVariables.load_level(world_scene)
 	pass
