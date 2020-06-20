@@ -1,11 +1,9 @@
 extends Node
 
-const START_HEALTH = 5
-
-signal health_changed(player_health)
+signal deaths_changed(player_deaths)
 signal gravity_changed(new_gravity)
 
-var player_health = START_HEALTH
+var player_deaths = 0
 var gravity = Vector2(0,0)
 var character = "Righty"
 
@@ -50,12 +48,9 @@ func play_sound(sound):
 		sounds_player.stream = sounds[sound]
 		sounds_player.play()
 		
-func change_player_health(health_change):
-	player_health += health_change
-	emit_signal("health_changed", player_health)
-	
-	if player_health <= 0:
-		load_level("res://GameOver.tscn")
+func change_player_deaths(health_change):
+	player_deaths -= health_change
+	emit_signal("deaths_changed", player_deaths)
 
 func change_gravity(new_gravity):
 	gravity = new_gravity
@@ -73,7 +68,7 @@ func can_turn_right():
 	return character == "Righty" or character == "God"
 	
 func restart():
-	player_health = START_HEALTH
+	player_deaths = 0
 	load_level("res://StartScreen.tscn")
 	
 ##### SCENE LOADER

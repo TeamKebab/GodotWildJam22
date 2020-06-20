@@ -1,34 +1,26 @@
 extends MarginContainer
 
-onready var hearts = [
-	$HBoxContainer/Hearts/Heart,
-	$HBoxContainer/Hearts/Heart2,
-	$HBoxContainer/Hearts/Heart3,
-	$HBoxContainer/Hearts/Heart4,
-	$HBoxContainer/Hearts/Heart5
-]
+var deaths = 0
+onready var death_counter = find_node("DeathCounter")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	PlayerVariables.connect("health_changed", self, "_on_PlayerVariables_health_changed")
-	change_hearts(PlayerVariables.player_health)
+	PlayerVariables.connect("deaths_changed", self, "_on_PlayerVariables_deaths_changed")
+	
+	change_deaths(PlayerVariables.player_deaths)
 	pass # Replace with function body.
 
-func _on_PlayerVariables_health_changed(player_health):
-	change_hearts(player_health)
+func _on_PlayerVariables_deaths_changed(player_deaths):
+	change_deaths(player_deaths)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-
-func change_hearts(num_hearts):
-	for i in range(0, hearts.size()):
-		if i < num_hearts:
-			hearts[i].show()
-		else:
-			hearts[i].hide()
+func change_deaths(player_deaths):
+	deaths = player_deaths
+	death_counter.text = str(player_deaths)
 	
 func _on_Music_toggled(button_pressed):
 	PlayerVariables.set_play_music(button_pressed)

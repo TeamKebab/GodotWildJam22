@@ -106,7 +106,7 @@ func collide_with_hazards():
 			var collision = get_slide_collision(idx)
 			var collider = collision.get_collider()
 			if collider.has_method("get_damage"):
-				PlayerVariables.change_player_health(-collider.get_damage())
+				PlayerVariables.change_player_deaths(-collider.get_damage())
 				revive()
 				break
 
