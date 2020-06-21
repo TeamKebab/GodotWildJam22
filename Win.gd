@@ -2,14 +2,39 @@ extends Node
 
 const titles = [
 	{
-		"deaths": 5,
-		"title": "LA  MOSCA  fan",
+		"deaths": 200,
+		"title": "LA MOSCA fan",
+		"sprite": "res://Sprites/Medals/rusty.png"
+	},
+	{
+		"deaths": 100,
+		"title": "Flying Snake hugger",
+		"sprite": "res://Sprites/Medals/blue.png"
+	},
+	{
+		"deaths": 50,
+		"title": "Meatballorite gazer",
 		"sprite": "res://Sprites/Medals/green.png"
 	},
 	{
+		"deaths": 20,
+		"title": "R8-e's pizza pal",
+		"sprite": "res://Sprites/Medals/orange.png"
+	},
+	{
+		"deaths": 10,
+		"title": "L7-ee's apprentice",
+		"sprite": "res://Sprites/Medals/bronze.png"
+	},
+	{
+		"deaths": 5,
+		"title": "Adept Spinner",
+		"sprite": "res://Sprites/Medals/silver.png"
+	},
+	{
 		"deaths": 1,
-		"title": "Flying  Snake  hugger",
-		"sprite": "res://Sprites/Medals/blue.png"
+		"title": "Robulutionary Sage",
+		"sprite": "res://Sprites/Medals/gold.png"
 	},
 ]
 
