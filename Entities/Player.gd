@@ -24,7 +24,10 @@ func _ready():
 	start_motion = Vector2()
 	start_up = Vector2(0,-1).rotated(rotation)
 	
-	sprite = $RightySprite
+	$RightySprite.hide()
+	$LeftySprite.hide()
+	$RightyShape.disabled = true
+	$LeftyShape.disabled = true
 	
 	set_character()
 	restart()
@@ -128,8 +131,9 @@ func set_character():
 		$RightyShape.disabled = false
 
 func set_sprite(new_sprite):
-	sprite.hide()
-	sprite.disconnect("animation_finished", self, "finished_animation")
+	if sprite != null:
+		sprite.hide()
+		sprite.disconnect("animation_finished", self, "finished_animation")
 	
 	sprite = new_sprite
 	sprite.show()
