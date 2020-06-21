@@ -51,18 +51,20 @@ func _on_sounds_player_finished():
 		
 func set_play_music(play):
 	music_enabled = play
-	
-	if music_enabled:
-		music_player.play(music_position)
+	if play:
+		music_player.volume_db = 0
 	else:
-		music_position = music_player.get_playback_position()
-		music_player.stop()
+		music_player.volume_db = -80
 
 func set_play_sounds(play):
 	sounds_enabled = play
+	if play:
+		sounds_player.volume_db = 0
+	else:
+		sounds_player.volume_db = -80
 			
 func play_sound(name):
-	if sounds.has(name) and sounds_enabled:
+	if sounds.has(name):
 		if sounds_player.playing:
 			emit_signal("sound_stopped", current_sound, false)
 		current_sound = name
@@ -75,8 +77,5 @@ func play_music(name):
 	
 	if name != current_music:
 		current_music = name
-		music_position = 0.0
 		music_player.stream = music[current_music]
-		
-		if music_enabled:
-			music_player.play()
+		music_player.play()

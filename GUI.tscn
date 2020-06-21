@@ -20,23 +20,23 @@ region = Rect2( 17, 0, 17, 48 )
 atlas = ExtResource( 5 )
 region = Rect2( 48, 4, 36, 32 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 34, 0, 17, 48 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
 region = Rect2( 16, 64, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
 region = Rect2( 64, 64, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 4 )
 region = Rect2( 16, 16, 48, 48 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
 region = Rect2( 64, 16, 48, 48 )
 
@@ -54,9 +54,9 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 20.0
-margin_top = 152.0
+margin_top = 10.0
 margin_right = 1260.0
-margin_bottom = 200.0
+margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
@@ -103,7 +103,7 @@ stretch_mode = 4
 
 [node name="Label" type="Label" parent="HBoxContainer/Deaths/PanelContainer/HBoxContainer"]
 margin_left = 40.0
-margin_top = 5.0
+margin_top = 2.0
 margin_right = 54.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 3 )
@@ -113,7 +113,7 @@ align = 1
 
 [node name="DeathCounter" type="Label" parent="HBoxContainer/Deaths/PanelContainer/HBoxContainer"]
 margin_left = 58.0
-margin_top = 5.0
+margin_top = 2.0
 margin_right = 198.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 3 )
@@ -124,7 +124,7 @@ text = "9000000000"
 margin_left = 208.0
 margin_right = 225.0
 margin_bottom = 48.0
-texture = SubResource( 6 )
+texture = SubResource( 5 )
 
 [node name="VolumeContainer" type="HBoxContainer" parent="HBoxContainer"]
 margin_left = 229.0
@@ -139,8 +139,8 @@ margin_right = 959.0
 margin_bottom = 48.0
 toggle_mode = true
 pressed = true
-texture_normal = SubResource( 7 )
-texture_pressed = SubResource( 8 )
+texture_normal = SubResource( 6 )
+texture_pressed = SubResource( 7 )
 stretch_mode = 3
 
 [node name="Effects" type="TextureButton" parent="HBoxContainer/VolumeContainer"]
@@ -149,7 +149,7 @@ margin_right = 1011.0
 margin_bottom = 48.0
 toggle_mode = true
 pressed = true
-texture_normal = SubResource( 9 )
-texture_pressed = SubResource( 10 )
+texture_normal = SubResource( 8 )
+texture_pressed = SubResource( 9 )
 [connection signal="toggled" from="HBoxContainer/VolumeContainer/Music" to="." method="_on_Music_toggled"]
 [connection signal="toggled" from="HBoxContainer/VolumeContainer/Effects" to="." method="_on_Effects_toggled"]

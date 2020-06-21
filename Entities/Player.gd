@@ -44,7 +44,7 @@ func _ready():
 	PlayerVariables.connect("player_hit", self, "_on_PlayerVariables_player_hit")
 	
 func _on_PlayerVariables_player_hit():
-	if time_since_last_death > INVULNERABILITY_SECONDS:
+	if time_since_last_death > INVULNERABILITY_SECONDS and !is_dead:
 		die()
 		
 func _physics_process(delta):

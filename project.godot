@@ -16,8 +16,20 @@ _global_script_class_icons={
 [application]
 
 config/name="Robolution"
+config/description="You are a robot that loves to spin. 
+Big bugs, flying snakes and random meatballorites stand in your way... 
+but with the power of the robolution, you will emerge victorious!
+
+Robolution = Robot + revolution (clever)
+Revolution = an instant of revolving e.g. one revolution a second (very clever, we managed to fit the theme of the Godot Wild Jam #22)
+
+Control gravity while you spin with L7-ee (left turns) and R8-e (right turns)! (awesomely clever) 
+Try to run through the different levels without harming our precious robots! (they aren't cheap to repair...)
+And be careful with the inertia you carry with your actions. 
+With great power comes great robonsability..."
 run/main_scene="res://StartScreen.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
