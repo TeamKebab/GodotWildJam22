@@ -6,27 +6,33 @@ export var spawn_wait = 2.0
 
 var first_shot = true
 var hazard
+var timer
 
 func _ready():
 	hazard = get_node(hazard_node_path)
+	timer = find_node("Timer")
 	
 	hazard.position = position
 	hazard.hide()
 	hazard.set_process(false)
-	
-	$Timer.connect("timeout", self, "_on_Timer_timeout")
-	hazard.connect("destroyed", $Timer, "start")
+			
+	timer.connect("timeout", self, "_on_timer_timeout")
+	hazard.connect("destroyed", self, "_on_hazard_destroyed")
 	
 	if (first_spawn_offset <= 0):
 		spawn()
 		first_shot = false
 	else:
-		$Timer.start(first_spawn_offset);
+		timer.start(first_spawn_offset);
 
-func _on_Timer_timeout():
-	print("timeout")
+func _on_hazard_destroyed():
+	hazard.set_process(false)
+	hazard.set_physics_process(false)
+	timer.start()
+	
+func _on_timer_timeout():	
 	if first_shot:
-		$Timer.wait_time = spawn_wait
+		timer.wait_time = spawn_wait
 		first_shot = false
 	
 	spawn()
@@ -34,4 +40,5 @@ func _on_Timer_timeout():
 func spawn():
 	hazard.position = position
 	hazard.set_process(true)
+	hazard.set_physics_process(true)
 	hazard.restart()

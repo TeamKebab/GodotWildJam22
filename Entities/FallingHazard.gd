@@ -1,37 +1,11 @@
-extends "res://Entities/HazardBase.gd"
+extends "res://Entities/DownFallingHazard.gd"
 
-export var start_motion = Vector2(0,0)
-export var max_velocity = 500
+export var gravity_factor = 0.2
 
-signal destroyed()
-
-var gravity
-var motion
-var gravity_factor = 0.2
 func _ready():
 	PlayerVariables.connect("gravity_changed", self, "_on_Player_gravity_changed")
 	
-	gravity = PlayerVariables.gravity
-	motion = start_motion
+	gravity_vector = PlayerVariables.gravity * gravity_factor
 	
 func _on_Player_gravity_changed(new_gravity):
-	gravity = new_gravity	
-
-func _physics_process(delta):
-	motion += gravity * gravity_factor * delta;
-	
-	$AnimatedSprite.rotation = motion.angle() - PI / 2
-	
-	var collision = move_and_collide(motion * delta, true, true, true)
-	if collision != null and collision.collider.name != "Player":
-		print("destroyed")
-		emit_signal("destroyed")
-		hide()
-		set_process(false)
-	
-	position = position + (delta * motion).clamped(max_velocity)
-	
-func restart():	
-	motion = start_motion
-	show()
-	
+	gravity_vector = new_gravity * gravity_factor
