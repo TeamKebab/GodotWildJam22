@@ -16,6 +16,7 @@ var motion
 var up
 var time_since_last_death
 var time_since_blink
+var is_dead = false
 
 var sprite
 var spawnSprite
@@ -39,24 +40,27 @@ func _ready():
 	spawnSprite = get_parent().find_node("SpawnerSprite")
 	spawnSprite.play("Loading")
 	
+	AudioPlayer.connect("sound_stopped", self, "_on_AudioPlayer_sound_stopped")
+	
 		
 func _physics_process(delta):
 	time_since_last_death += delta
 	
-	if time_since_last_death > NO_MOVEMENT_SECONDS:
-		process_inputs()
-		spawnSprite.play("Waiting")
-	else:
-		spawnSprite.play("Loading")
-	
-	rotate_with_gravity(delta)	
-	move(delta)
-	
-	if time_since_last_death > INVULNERABILITY_SECONDS:
-		sprite.visible = true
-		collide_with_hazards()
-	else:
-		blink(delta)
+	if !is_dead:
+		if time_since_last_death > NO_MOVEMENT_SECONDS:
+			process_inputs()
+			spawnSprite.play("Waiting")
+		else:
+			spawnSprite.play("Loading")
+		
+		rotate_with_gravity(delta)	
+		move(delta)
+		
+		if time_since_last_death > INVULNERABILITY_SECONDS:
+			sprite.visible = true
+			collide_with_hazards()
+		else:
+			blink(delta)
 
 func process_inputs():
 	if PlayerVariables.can_turn_right() and Input.is_action_just_pressed("ui_right"):
@@ -113,8 +117,7 @@ func collide_with_hazards():
 			var collision = get_slide_collision(idx)
 			var collider = collision.get_collider()
 			if collider.has_method("get_damage"):
-				PlayerVariables.change_player_deaths(-collider.get_damage())
-				revive()
+				die()
 				break
 
 func blink(delta):
@@ -149,7 +152,17 @@ func set_sprite(new_sprite):
 	sprite.play("Fall")
 	sprite.connect("animation_finished", self, "finished_animation")	
 	
+func die():
+	is_dead = true
+	PlayerVariables.change_player_deaths(-1)
+	AudioPlayer.play_sound("die")
+	
+func _on_AudioPlayer_sound_stopped(sound, finished):
+	if is_dead and sound == "die":
+		revive()
+				
 func revive():	
+	is_dead = false
 	time_since_last_death = 0
 	AudioPlayer.play_sound("loading_player")
 	restart()

@@ -1,8 +1,11 @@
 extends Node
 
+signal sound_stopped(sound, finished)
+
 const SOUNDS = {
 	"loading_player": "res://Sounds/win-1.wav",
-	"choose_character": "res://Sounds/select-player.wav"
+	"choose_character": "res://Sounds/select-player.wav",
+	"die": "res://Sounds/explode-6.wav"
 }
 
 const MUSIC = {
@@ -19,6 +22,7 @@ var music = {}
 
 var sounds_player
 var sounds_enabled = true setget set_play_sounds
+var current_sound = ""
 var sounds = {}
 
 func _ready():
@@ -37,8 +41,13 @@ func init_sounds_player():
 	sounds_player = AudioStreamPlayer.new()
 	add_child(sounds_player)
 	
+	sounds_player.connect("finished", self, "_on_sounds_player_finished")
+	
 	for sound_key in SOUNDS:
 		sounds[sound_key] = load(SOUNDS[sound_key])
+
+func _on_sounds_player_finished():
+	emit_signal("sound_stopped", current_sound, true)
 		
 func set_play_music(play):
 	music_enabled = play
@@ -54,6 +63,9 @@ func set_play_sounds(play):
 			
 func play_sound(name):
 	if sounds.has(name) and sounds_enabled:
+		if sounds_player.playing:
+			emit_signal("sound_stopped", current_sound, false)
+		current_sound = name
 		sounds_player.stream = sounds[name]
 		sounds_player.play()
 	
