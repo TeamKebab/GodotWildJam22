@@ -19,13 +19,12 @@ var sprite
 var spawnSprite
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$LeftySprite.connect("animation_finished", self, "finished_animation")	
-	$RightySprite.connect("animation_finished", self, "finished_animation")	
-	
+func _ready():	
 	start_position = position	
 	start_motion = Vector2()
 	start_up = Vector2(0,-1).rotated(rotation)
+	
+	sprite = $RightySprite
 	
 	set_character()
 	restart()
@@ -120,28 +119,23 @@ func finished_animation():
 
 func set_character():
 	if PlayerVariables.character == "Lefty":
-		sprite = $LeftySprite
-		
-		$RightySprite.hide()
-		$RightyShape.hide()
+		set_sprite($LeftySprite)
 		$RightyShape.disabled = true
-		
-		$LeftySprite.show()
-		$LeftyShape.show()
 		$LeftyShape.disabled = false
-		$LeftySprite.play("Fall")
 	else:
-		sprite = $RightySprite
-		
-		$LeftySprite.hide()
-		$LeftySprite.hide()
+		set_sprite($RightySprite)
 		$LeftyShape.disabled = true
-		
-		$RightySprite.show()
-		$RightySprite.show()
 		$RightyShape.disabled = false
-		$RightySprite.play("Fall")
 
+func set_sprite(new_sprite):
+	sprite.hide()
+	sprite.disconnect("animation_finished", self, "finished_animation")
+	
+	sprite = new_sprite
+	sprite.show()
+	sprite.play("Fall")
+	sprite.connect("animation_finished", self, "finished_animation")	
+	
 func revive():	
 	time_since_last_death = 0
 	AudioPlayer.play_sound("loading_player")

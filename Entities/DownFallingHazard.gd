@@ -17,16 +17,13 @@ func _physics_process(delta):
 	motion += gravity_vector * delta;
 	
 	$AnimatedSprite.rotation = motion.angle() - PI / 2
-	
-	var collision = move_and_collide(motion * delta, true, false, true)
-	if collision != null and collision.collider.name != "Player":
+		
+	var collision = move_and_collide((delta * motion).clamped(max_velocity))
+	if collision != null:
 		hide()
 		emit_signal("destroyed")
 	
-	move_and_collide((delta * motion).clamped(max_velocity))
-	
-func restart():	
-	print("spawned at ", position)
+func restart():
 	motion = start_motion
 	show()
 	

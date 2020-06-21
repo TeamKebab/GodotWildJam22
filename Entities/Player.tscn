@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/lefty_fall.png" type="Texture" id=2]
@@ -64,10 +64,6 @@ animations = [ {
 radius = 20.075
 height = 38.899
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 96, 144 )
-
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 96, 144 )
@@ -118,10 +114,10 @@ region = Rect2( 96, 144, 96, 144 )
 
 [sub_resource type="SpriteFrames" id=25]
 animations = [ {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
 "name": "Turn",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
@@ -146,6 +142,7 @@ script = ExtResource( 1 )
 visible = false
 frames = SubResource( 10 )
 animation = "Fall"
+frame = 1
 playing = true
 
 [node name="RightyShape" type="CollisionShape2D" parent="."]
@@ -155,7 +152,7 @@ shape = SubResource( 11 )
 [node name="LeftySprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 25 )
 animation = "Turn"
-frame = 4
+frame = 3
 playing = true
 
 [node name="LeftyShape" type="CollisionShape2D" parent="."]

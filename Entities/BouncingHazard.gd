@@ -14,5 +14,4 @@ func _physics_process(delta):
 	if collision != null and collision.collider.name != "Player":
 		motion = motion.bounce(collision.normal).normalized() * move_speed
 		
-	position = position + delta * motion
-	pass
+	move_and_collide(motion * delta)
