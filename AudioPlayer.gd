@@ -6,7 +6,9 @@ const SOUNDS = {
 }
 
 const MUSIC = {
-	"levels": "res://Sounds/robolution_theme_1.ogg"
+	"levels": "res://Sounds/robolution_theme_1.ogg",
+	"start_screen": "res://Sounds/select_character.ogg",
+	"win_screen": "res://Sounds/game_over.ogg"
 }
 
 var music_player
