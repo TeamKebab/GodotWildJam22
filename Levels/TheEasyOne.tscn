@@ -351,18 +351,27 @@ tile_data = PoolIntArray( 0, 0, 6, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 
 [node name="Serpiente" parent="Hazardos" index="0" instance=ExtResource( 1 )]
 position = Vector2( 323.95, 342.95 )
+collision_mask = 1
 patrol_path = NodePath("../Path2D")
 
 [node name="AnimatedSprite" parent="Hazardos/Serpiente" index="0"]
-frame = 3
+frame = 0
 
 [node name="Serpiente2" parent="Hazardos" index="1" instance=ExtResource( 1 )]
 position = Vector2( 669.75, 431.3 )
+collision_mask = 1
 patrol_path = NodePath("../Path2D2")
+
+[node name="AnimatedSprite" parent="Hazardos/Serpiente2" index="0"]
+frame = 1
 
 [node name="Serpiente3" parent="Hazardos" index="2" instance=ExtResource( 1 )]
 position = Vector2( 1024.1, 347.7 )
+collision_mask = 1
 patrol_path = NodePath("../Path2D3")
+
+[node name="AnimatedSprite" parent="Hazardos/Serpiente3" index="0"]
+frame = 1
 
 [node name="Path2D" type="Path2D" parent="Hazardos" index="3"]
 curve = SubResource( 35 )
@@ -374,7 +383,7 @@ curve = SubResource( 36 )
 curve = SubResource( 37 )
 
 [node name="SpawnerSprite" parent="PlayerSpawner" index="1"]
-frame = 6
+frame = 8
 
 [editable path="Hazardos/Serpiente"]
 

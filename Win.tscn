@@ -211,11 +211,13 @@ anims/Rotation = SubResource( 2 )
 
 [node name="Righty" parent="." instance=ExtResource( 2 )]
 position = Vector2( 736.788, 548.872 )
+collision_layer = 1
+collision_mask = 1
 start_direction = 45
 
 [node name="AnimatedSprite" parent="Righty" index="0"]
 frames = SubResource( 7 )
-frame = 3
+frame = 2
 flip_h = false
 
 [node name="CollisionShape2D" parent="Righty" index="1"]
@@ -224,6 +226,8 @@ rotation = 0.0
 
 [node name="Lefty" parent="." instance=ExtResource( 2 )]
 position = Vector2( 348.647, 184.785 )
+collision_layer = 1
+collision_mask = 1
 start_direction = -45
 
 [node name="AnimatedSprite" parent="Lefty" index="0"]
