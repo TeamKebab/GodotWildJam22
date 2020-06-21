@@ -23,9 +23,12 @@ func _physics_process(delta):
 		
 	var collision = move_and_collide((delta * motion).clamped(max_velocity))
 	if collision != null:
+		if collision.collider.name == "Player":
+			PlayerVariables.hit_player()
+		
 		disable()
 		emit_signal("destroyed")
-	
+		
 func restart():
 	motion = start_motion
 	enable()

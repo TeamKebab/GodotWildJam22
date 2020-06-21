@@ -41,7 +41,11 @@ func _ready():
 	spawnSprite.play("Loading")
 	
 	AudioPlayer.connect("sound_stopped", self, "_on_AudioPlayer_sound_stopped")
+	PlayerVariables.connect("player_hit", self, "_on_PlayerVariables_player_hit")
 	
+func _on_PlayerVariables_player_hit():
+	if time_since_last_death > INVULNERABILITY_SECONDS:
+		die()
 		
 func _physics_process(delta):
 	time_since_last_death += delta

@@ -390,7 +390,7 @@ scale = Vector2( 2, 2 )
 move_speed = 0
 
 [node name="AnimatedSprite" parent="Hazardos/Mosca" index="0"]
-frame = 1
+frame = 0
 flip_h = false
 
 [node name="Mosca2" parent="Hazardos" index="6" instance=ExtResource( 4 )]
@@ -399,7 +399,7 @@ scale = Vector2( 2, 2 )
 move_speed = 0
 
 [node name="AnimatedSprite" parent="Hazardos/Mosca2" index="0"]
-frame = 0
+frame = 7
 flip_h = false
 
 [node name="Mosca3" parent="Hazardos" index="7" instance=ExtResource( 4 )]
@@ -408,7 +408,7 @@ scale = Vector2( 2, 2 )
 move_speed = 0
 
 [node name="AnimatedSprite" parent="Hazardos/Mosca3" index="0"]
-frame = 0
+frame = 7
 flip_h = false
 
 [node name="Mosca4" parent="Hazardos" index="8" instance=ExtResource( 4 )]
@@ -417,7 +417,6 @@ scale = Vector2( 2, 2 )
 move_speed = 0
 
 [node name="AnimatedSprite" parent="Hazardos/Mosca4" index="0"]
-frame = 7
 flip_h = false
 
 [node name="Serpiente" parent="Hazardos" index="9" instance=ExtResource( 5 )]
@@ -438,7 +437,7 @@ curve = SubResource( 36 )
 position = Vector2( 1140, 658 )
 
 [node name="SpawnerSprite" parent="PlayerSpawner" index="1"]
-frame = 6
+frame = 2
 
 [editable path="Hazardos/MeteoriteSpawner"]
 

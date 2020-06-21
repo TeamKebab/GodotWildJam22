@@ -20,7 +20,10 @@ func _physics_process(delta):
 		target = patrol_points[patrol_index]
 	
 	var velocity = (target - position).normalized() * move_speed
-	position = position + delta * velocity
+	
+	var collision = move_and_collide(delta * velocity)
+	if collision != null and collision.collider.name == "Player":
+			PlayerVariables.hit_player()	
 	
 	$AnimatedSprite.rotation = velocity.angle()
 	if (velocity.x < 0.5):

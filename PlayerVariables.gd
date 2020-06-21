@@ -3,11 +3,15 @@ extends Node
 signal deaths_changed(player_deaths)
 signal gravity_changed(new_gravity)
 signal character_chosen(character)
+signal player_hit()
 
 var player_deaths = 0
 var gravity = Vector2(0,0)
 var character = "Righty"
-	
+
+func hit_player():
+	emit_signal("player_hit")
+		
 func change_player_deaths(health_change):
 	player_deaths -= health_change
 	emit_signal("deaths_changed", player_deaths)
