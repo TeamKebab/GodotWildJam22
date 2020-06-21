@@ -345,6 +345,9 @@ position = Vector2( 280, 104 )
 [node name="MeteoriteSpawner7" parent="Hazardos" index="3" instance=ExtResource( 2 )]
 position = Vector2( 184, 104 )
 
+[node name="SpawnerSprite" parent="PlayerSpawner" index="1"]
+frame = 6
+
 [editable path="Hazardos/MeteoriteSpawner4"]
 
 [editable path="Hazardos/MeteoriteSpawner4/Spawner"]
