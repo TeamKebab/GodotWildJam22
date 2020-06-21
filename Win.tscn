@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://arcade-big_font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Entities/BouncingHazard.tscn" type="PackedScene" id=2]
@@ -62,6 +62,9 @@ animations = [ {
 "name": "default",
 "speed": 10.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 6 )
@@ -185,12 +188,11 @@ start_direction = 45
 
 [node name="AnimatedSprite" parent="Righty" index="0"]
 frames = SubResource( 7 )
-frame = 0
+frame = 1
 flip_h = false
 
-[node name="CollisionShape2D" parent="Righty" index="1"]
-position = Vector2( 3.57628e-06, 4.21632 )
-rotation = 0.0
+[node name="Shape" type="CollisionShape2D" parent="Righty" index="1"]
+shape = SubResource( 14 )
 
 [node name="Lefty" parent="." instance=ExtResource( 2 )]
 position = Vector2( 348.647, 184.785 )
@@ -199,12 +201,11 @@ start_direction = -45
 
 [node name="AnimatedSprite" parent="Lefty" index="0"]
 frames = SubResource( 13 )
-frame = 3
+frame = 1
 flip_h = false
 
-[node name="CollisionShape2D" parent="Lefty" index="1"]
-position = Vector2( -0.52853, -9.75334 )
-rotation = 0.0
+[node name="Shape" type="CollisionShape2D" parent="Lefty" index="1"]
+shape = SubResource( 14 )
 
 [editable path="Righty"]
 

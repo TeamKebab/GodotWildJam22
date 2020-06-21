@@ -438,7 +438,7 @@ curve = SubResource( 36 )
 position = Vector2( 1140, 658 )
 
 [node name="SpawnerSprite" parent="PlayerSpawner" index="1"]
-frame = 0
+frame = 6
 
 [editable path="Hazardos/MeteoriteSpawner"]
 

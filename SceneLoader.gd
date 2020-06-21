@@ -3,6 +3,8 @@ extends Node
 const LEVELS = [
 #	"res://Levels/Tests/MeteoriteTest.tscn",
 #	"res://Levels/Tests/MoscaTest.tscn",
+	"res://Levels/IHateMyLife.tscn",
+	"res://Levels/RainingMeatballs.tscn",
 	"res://Levels/TheEasyOne.tscn",
 	"res://Levels/MoscaIntro.tscn",
 	"res://Levels/TheFunBegins.tscn",

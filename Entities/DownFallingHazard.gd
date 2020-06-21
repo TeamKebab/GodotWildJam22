@@ -14,7 +14,7 @@ var shape
 func _ready():
 	gravity_vector = gravity * Vector2(0,1)
 	motion = start_motion
-	shape = find_node("Shape")
+	shape = find_node("CollisionShape2D")
 		
 func _physics_process(delta):
 	motion += gravity_vector * delta;
