@@ -23,12 +23,14 @@ func start_screen():
 func first_level():
 	level_index = 0
 	load_level(LEVELS[level_index])
+	AudioPlayer.play_music("levels")
 	
 func next_level():
 	level_index += 1
 	
 	if level_index == LEVELS.size():
 		load_level(WIN_SCREEN)
+		AudioPlayer.play_music("win_screen")
 	else:
 		load_level(LEVELS[level_index])
 

@@ -5,15 +5,18 @@ const SOUNDS = {
 	"choose_character": "res://Sounds/select-player.wav"
 }
 
-const LEVELS_MUSIC = "res://Sounds/robolution_theme_1.ogg"
+const MUSIC = {
+	"levels": "res://Sounds/robolution_theme_1.ogg"
+}
 
 var music_player
-var play_music = true setget set_play_music
+var music_enabled = true setget set_play_music
 var music_position = 0.0
+var current_music = ""
+var music = {}
 
 var sounds_player
-var play_sounds = true setget set_play_sounds
-
+var sounds_enabled = true setget set_play_sounds
 var sounds = {}
 
 func _ready():
@@ -24,11 +27,9 @@ func init_music_player():
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
 	
-	var music = load(LEVELS_MUSIC)
-	music.set_loop(true)
-	
-	music_player.stream = music
-	music_player.play()
+	for music_key in MUSIC:
+		music[music_key] = load(MUSIC[music_key])
+		music[music_key].set_loop(true)
 		
 func init_sounds_player():	
 	sounds_player = AudioStreamPlayer.new()
@@ -38,19 +39,30 @@ func init_sounds_player():
 		sounds[sound_key] = load(SOUNDS[sound_key])
 		
 func set_play_music(play):
-	play_music = play
+	music_enabled = play
 	
-	if play_music:
+	if music_enabled:
 		music_player.play(music_position)
 	else:
 		music_position = music_player.get_playback_position()
 		music_player.stop()
 
 func set_play_sounds(play):
-	play_sounds = play
+	sounds_enabled = play
 			
-func play_sound(sound):
-	if sounds.has(sound) and play_sounds:
-		sounds_player.stream = sounds[sound]
+func play_sound(name):
+	if sounds.has(name) and sounds_enabled:
+		sounds_player.stream = sounds[name]
 		sounds_player.play()
 	
+func play_music(name):
+	if not music.has(name):
+		name = "levels"
+	
+	if name != current_music:
+		current_music = name
+		music_position = 0.0
+		music_player.stream = music[current_music]
+		
+		if music_enabled:
+			music_player.play()

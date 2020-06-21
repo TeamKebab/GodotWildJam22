@@ -15,8 +15,8 @@ func _ready():
 		
 	change_deaths(PlayerVariables.player_deaths)
 	
-	find_node("Music").pressed = AudioPlayer.play_music
-	find_node("Effects").pressed = AudioPlayer.play_sounds
+	find_node("Music").pressed = AudioPlayer.music_enabled
+	find_node("Effects").pressed = AudioPlayer.sounds_enabled
 
 func _on_PlayerVariables_deaths_changed(player_deaths):
 	change_deaths(player_deaths)
@@ -33,7 +33,7 @@ func change_deaths(player_deaths):
 	death_counter.text = str(player_deaths)
 	
 func _on_Music_toggled(button_pressed):
-	AudioPlayer.play_music = button_pressed
+	AudioPlayer.music_enabled = button_pressed
 
 func _on_Effects_toggled(button_pressed):
-	AudioPlayer.play_sounds = button_pressed
+	AudioPlayer.sounds_enabled = button_pressed

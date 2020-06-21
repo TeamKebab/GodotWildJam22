@@ -1,5 +1,8 @@
 extends Control
 
+func _ready():
+	AudioPlayer.play_music("start_screen")
+
 func _input(event):
 	if event.is_action_pressed("ui_left"):
 		choose_character("Lefty")
