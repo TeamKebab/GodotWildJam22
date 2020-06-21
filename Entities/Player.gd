@@ -6,6 +6,7 @@ const ROTATION = PI / 2
 const ROTATION_SPEED = 15 * PI
 const NO_MOVEMENT_SECONDS = 1
 const INVULNERABILITY_SECONDS = 3
+const BLINKING_SECONDS = 0.1
 
 var start_position
 var start_motion
@@ -14,6 +15,7 @@ var start_up
 var motion
 var up
 var time_since_last_death
+var time_since_blink
 
 var sprite
 var spawnSprite
@@ -32,7 +34,8 @@ func _ready():
 	set_character()
 	restart()
 	time_since_last_death = INVULNERABILITY_SECONDS
-
+	time_since_blink = BLINKING_SECONDS
+	
 	spawnSprite = get_parent().find_node("SpawnerSprite")
 	spawnSprite.play("Loading")
 	
@@ -53,8 +56,7 @@ func _physics_process(delta):
 		sprite.visible = true
 		collide_with_hazards()
 	else:
-		sprite.visible = !sprite.visible
-
+		blink(delta)
 
 func process_inputs():
 	if PlayerVariables.can_turn_right() and Input.is_action_just_pressed("ui_right"):
@@ -115,6 +117,13 @@ func collide_with_hazards():
 				revive()
 				break
 
+func blink(delta):
+	time_since_blink += delta
+				
+	if time_since_blink >= BLINKING_SECONDS:
+		sprite.visible = !sprite.visible
+		time_since_blink = 0
+	
 func finished_animation():
 	if sprite.animation == "Turn":
 		sprite.play("Fall");
