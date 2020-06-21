@@ -13,6 +13,8 @@ const titles = [
 	},
 ]
 
+var input_enabled = false
+
 func _ready():
 	find_node("DeathCounter").text = str(PlayerVariables.player_deaths)
 	
@@ -28,13 +30,18 @@ func _ready():
 		texture.set_frame_texture(1, load("res://Sprites/Medals/silver.png"))
 		texture.set_frame_texture(2, load("res://Sprites/Medals/bronze.png"))
 		find_node("Medal").texture = texture
-		
+	
+	input_enabled = false
 		
 func set_title(title):
 	find_node("Title").text = title.title
 	find_node("Medal").texture = load(title.sprite)
 	
 func _input(event):
-	if event is InputEventKey and event.pressed:
+	if input_enabled and event is InputEventKey and event.pressed:
 		PlayerVariables.restart() 
 
+
+
+func _on_Timer_timeout():
+	input_enabled = true
