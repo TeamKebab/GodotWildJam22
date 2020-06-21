@@ -5,7 +5,7 @@ const MAX_SPEED = 500
 const ROTATION = PI / 2
 const ROTATION_SPEED = 15 * PI
 const NO_MOVEMENT_SECONDS = 1
-const INVULNERABILITY_SECONDS = 5
+const INVULNERABILITY_SECONDS = 3
 
 var start_position
 var start_motion
