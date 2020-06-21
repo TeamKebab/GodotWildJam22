@@ -21,6 +21,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
+SceneLoader="*res://SceneLoader.gd"
+AudioPlayer="*res://AudioPlayer.gd"
 PlayerVariables="*res://PlayerVariables.gd"
 
 [display]

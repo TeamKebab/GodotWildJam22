@@ -144,7 +144,7 @@ func set_character():
 
 func revive():	
 	time_since_last_death = 0
-	PlayerVariables.play_sound("loading_player")
+	AudioPlayer.play_sound("loading_player")
 	restart()
 	
 func restart():

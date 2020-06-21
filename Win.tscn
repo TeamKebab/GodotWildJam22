@@ -11,17 +11,16 @@
 
 [sub_resource type="Theme" id=1]
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=2]
 size = 64
 outline_size = 1
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=3]
 size = 128
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Rotation"
+[sub_resource type="Animation" id=4]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -49,53 +48,53 @@ tracks/1/keys = {
 "values": [ 0.0, -360.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 3 )
 region = Rect2( 96, 0, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 96, 96, 96 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 3 )
 region = Rect2( 96, 96, 96, 96 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
 } ]
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 96, 144 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 6 )
 region = Rect2( 96, 0, 96, 144 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 6 )
 region = Rect2( 192, 0, 96, 144 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 144, 96, 144 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 6 )
 region = Rect2( 96, 144, 96, 144 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=15]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 10.0
@@ -142,7 +141,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 1180.0
 margin_bottom = 76.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.666667, 0.627451, 0.729412, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.137255, 0.133333, 0.133333, 1 )
@@ -156,7 +155,7 @@ uppercase = true
 margin_top = 80.0
 margin_right = 1180.0
 margin_bottom = 231.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.666667, 0.627451, 0.729412, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.137255, 0.133333, 0.133333, 1 )
@@ -170,7 +169,7 @@ uppercase = true
 margin_top = 235.0
 margin_right = 1180.0
 margin_bottom = 311.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.666667, 0.627451, 0.729412, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.137255, 0.133333, 0.133333, 1 )
@@ -186,7 +185,7 @@ texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Rotation"
-anims/Rotation = SubResource( 2 )
+anims/Rotation = SubResource( 4 )
 
 [node name="Righty" parent="." instance=ExtResource( 2 )]
 position = Vector2( 736.788, 548.872 )
@@ -194,8 +193,8 @@ rotation = 2.42484
 start_direction = 45
 
 [node name="AnimatedSprite" parent="Righty" index="0"]
-frames = SubResource( 7 )
-frame = 1
+frames = SubResource( 9 )
+frame = 3
 flip_h = false
 
 [node name="CollisionShape2D" parent="Righty" index="1"]
@@ -208,8 +207,8 @@ rotation = -2.42484
 start_direction = -45
 
 [node name="AnimatedSprite" parent="Lefty" index="0"]
-frames = SubResource( 13 )
-frame = 2
+frames = SubResource( 15 )
+frame = 3
 flip_h = false
 
 [node name="CollisionShape2D" parent="Lefty" index="1"]

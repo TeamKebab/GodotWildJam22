@@ -19,7 +19,7 @@ func _ready():
 	
 func start_screen():
 	load_level(START_SCREEN)
-	
+
 func first_level():
 	level_index = 0
 	load_level(LEVELS[level_index])
