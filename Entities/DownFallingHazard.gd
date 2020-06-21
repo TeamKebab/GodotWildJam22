@@ -9,10 +9,13 @@ signal destroyed()
 var gravity_vector
 var motion
 
+var shape
+
 func _ready():
 	gravity_vector = gravity * Vector2(0,1)
 	motion = start_motion
-	
+	shape = find_node("Shape")
+		
 func _physics_process(delta):
 	motion += gravity_vector * delta;
 	
@@ -20,10 +23,25 @@ func _physics_process(delta):
 		
 	var collision = move_and_collide((delta * motion).clamped(max_velocity))
 	if collision != null:
-		hide()
+		disable()
 		emit_signal("destroyed")
 	
 func restart():
 	motion = start_motion
-	show()
+	enable()
 	
+func disable():
+	set_process(false)
+	set_physics_process(false)
+	shape.disabled = true
+	
+	hide()
+
+func enable():
+	set_process(true)
+	set_physics_process(true)
+	
+	if shape != null:
+		shape.disabled = false
+	
+	show()

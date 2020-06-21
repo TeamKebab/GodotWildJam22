@@ -26,8 +26,6 @@ func _ready():
 		timer.start(first_spawn_offset);
 
 func _on_hazard_destroyed():
-	hazard.set_process(false)
-	hazard.set_physics_process(false)
 	timer.start()
 	
 func _on_timer_timeout():	
@@ -39,6 +37,4 @@ func _on_timer_timeout():
 
 func spawn():
 	hazard.position = position
-	hazard.set_process(true)
-	hazard.set_physics_process(true)
 	hazard.restart()
